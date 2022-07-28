@@ -37,6 +37,8 @@ import com.example.sistema_calzados.ui.theme.Sistema_calzadosTheme
 
 @Composable
 fun RegistrarPantalla(
+    onClickRango: (String) -> Unit
+
 ) {
     Box(
         contentAlignment = Alignment.Center
@@ -135,8 +137,14 @@ fun RegistrarPantalla(
             ) {
                 list.forEach { label ->
                     DropdownMenuItem(onClick = {
+
                         selectedItem = label
                         expanded = false
+
+                        onClickRango(selectedItem)
+
+
+
                     }) {
                         Text(text = label)
                     }
@@ -271,6 +279,6 @@ fun RegistrarPantalla(
 @Composable
 private fun RegistrarPantallaPreview() {
     Sistema_calzadosTheme {
-        RegistrarPantalla()
+        RegistrarPantalla(onClickRango = {})
     }
 }

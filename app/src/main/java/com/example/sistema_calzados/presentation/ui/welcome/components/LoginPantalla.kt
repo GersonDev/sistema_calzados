@@ -27,7 +27,14 @@ import com.example.sistema_calzados.R
 import com.example.sistema_calzados.ui.theme.Sistema_calzadosTheme
 
 @Composable
-fun LoginPantalla() {
+fun LoginPantalla(
+    onClickIngresar: () -> Unit,
+    nombre: String,
+    contraseña: String,
+    onValueChangeNombre: (String) -> Unit,
+    onValueChangeContraseña: (String) -> Unit,
+    onClickIngreARegistro: (Int) -> Unit
+) {
     Box(
         contentAlignment = Alignment.Center
     ) {
@@ -83,8 +90,8 @@ fun LoginPantalla() {
                 style = MaterialTheme.typography.h1
             )
             TextField(
-                value = "",
-                onValueChange = {},
+                value = nombre,
+                onValueChange = onValueChangeNombre,
                 shape = RoundedCornerShape(15.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     backgroundColor = Color(0xFFFFFFFF)
@@ -110,8 +117,8 @@ fun LoginPantalla() {
                     .weight(0.1f)
             )
             TextField(
-                value = "",
-                onValueChange = {},
+                value = contraseña,
+                onValueChange = onValueChangeContraseña,
                 shape = RoundedCornerShape(15.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     backgroundColor = Color(0xFFFFFFFF)
@@ -137,14 +144,14 @@ fun LoginPantalla() {
                     .weight(0.4f)
             )
             Button(
-                onClick = { },
+                onClick = onClickIngresar,
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF283593)),
                 shape = RoundedCornerShape(15.dp),
                 modifier = Modifier
                     .fillMaxWidth(),
                 content = {
                     Text(
-                        text = "Registrarse",
+                        text = "Ingresar",
                         fontWeight = FontWeight.Bold,
                         color = Color.LightGray,
                         style = MaterialTheme.typography.body1
@@ -162,7 +169,7 @@ fun LoginPantalla() {
                     fontSize = 14.sp
                 )
                 ClickableText(
-                    text = AnnotatedString(" Ingrese a Registro"),
+                    text = AnnotatedString(" Ingrese a Registrarse"),
                     style = TextStyle(
                         color = Color(0xFF283593),
                         fontSize = 14.sp
@@ -178,6 +185,12 @@ fun LoginPantalla() {
 @Composable
 private fun LoginPantallaPreview() {
     Sistema_calzadosTheme {
-        LoginPantalla()
+        LoginPantalla(
+            onClickIngreARegistro = {},
+            onClickIngresar = {},
+            nombre = "",
+            contraseña = "",
+            onValueChangeContraseña = {},
+            onValueChangeNombre = {})
     }
 }
