@@ -103,7 +103,6 @@ fun WelcomePantalla() {
     }
 }
 
-
 @Preview
 @Composable
 private fun WelcomepantallaPreview() {
